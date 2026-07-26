@@ -110,9 +110,59 @@ a{
 2000 دج
 </div>
 
-<h3>الألوان المتوفرة:</h3>
+<div class="card">
 
-<div class="colors">
-<span>ڨرونة</span>
-<span>باج فونسي</span>
-<span>فار مينتار</span>
+<h2>استمارة الطلب</h2>
+
+<input id="name" type="text" placeholder="الاسم واللقب">
+
+<input id="phone" type="tel" placeholder="رقم الهاتف">
+
+<input id="wilaya" type="text" placeholder="الولاية">
+
+<select id="color">
+<option>اختر اللون</option>
+<option>ڨرونا</option>
+<option>باج فونسي</option>
+<option>فار مينيتار</option>
+<option>أبيض</option>
+<option>أسود</option>
+<option>غوز</option>
+<option>بلو فار</option>
+</select>
+
+<input id="quantity" type="number" placeholder="الكمية">
+
+<textarea id="note" placeholder="ملاحظة"></textarea>
+
+<br>
+
+<button onclick="sendWhatsApp()">
+اطلب الآن عبر واتساب
+</button>
+
+</div>
+
+
+<script>
+function sendWhatsApp(){
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let wilaya = document.getElementById("wilaya").value;
+let color = document.getElementById("color").value;
+let quantity = document.getElementById("quantity").value;
+let note = document.getElementById("note").value;
+
+let message =
+"طلب جديد من O&B_Dz%0A%0A"+
+"الاسم: "+name+"%0A"+
+"الهاتف: "+phone+"%0A"+
+"الولاية: "+wilaya+"%0A"+
+"اللون: "+color+"%0A"+
+"الكمية: "+quantity+"%0A"+
+"ملاحظة: "+note;
+
+window.open("https://wa.me/213799229645?text="+message);
+}
+</script>
