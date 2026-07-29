@@ -1,42 +1,285 @@
-<div class="box">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-<h2>استمارة الطلب</h2>
+<head>
 
-<input id="name" type="text" placeholder="الاسم واللقب">
+<meta charset="UTF-8">
 
-<input id="wilaya" type="text" placeholder="الولاية">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<input id="phone" type="tel" placeholder="رقم الهاتف">
+<title>O&B_Dz</title>
 
-<br>
+<style>
 
-<button onclick="sendOrder()">
-اطلب الآن عبر واتساب
-</button>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-</div>
+body{
+background:#111;
+color:white;
+}
 
+header{
 
-<script>
+background:#000;
 
-function sendOrder(){
+padding:40px 20px;
 
-let name=document.getElementById("name").value;
-let wilaya=document.getElementById("wilaya").value;
-let phone=document.getElementById("phone").value;
+text-align:center;
 
-
-let message=
-"طلب جديد من O&B_Dz%0A%0A"+
-"الاسم واللقب: "+name+"%0A"+
-"الولاية: "+wilaya+"%0A"+
-"رقم الهاتف: "+phone;
-
-
-window.open(
-"https://wa.me/213799229645?text="+message
-);
+border-bottom:3px solid gold;
 
 }
 
-</script>
+.logo{
+
+font-size:45px;
+
+font-weight:bold;
+
+color:gold;
+
+}
+
+header p{
+
+margin-top:10px;
+
+font-size:18px;
+
+color:#ddd;
+
+}
+
+.container{
+
+width:90%;
+
+max-width:1000px;
+
+margin:auto;
+
+padding:20px;
+
+}
+
+.card{
+
+background:#1b1b1b;
+
+padding:20px;
+
+border-radius:15px;
+
+margin-top:25px;
+
+box-shadow:0 0 10px rgba(255,215,0,.3);
+
+}
+
+h2{
+
+color:gold;
+
+margin-bottom:15px;
+
+text-align:center;
+
+}
+
+.price{
+
+font-size:30px;
+
+color:gold;
+
+font-weight:bold;
+
+text-align:center;
+
+margin:15px 0;
+
+}
+
+.colors{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:10px;
+
+margin-top:15px;
+
+}
+
+.colors span{
+
+background:#333;
+
+padding:10px 18px;
+
+border-radius:20px;
+
+}
+
+input,select{
+
+width:100%;
+
+padding:12px;
+
+margin-top:12px;
+
+border:none;
+
+border-radius:8px;
+
+font-size:16px;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+margin-top:20px;
+
+background:gold;
+
+color:black;
+
+font-size:18px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+}
+
+.result{
+
+margin-top:15px;
+
+font-size:18px;
+
+color:gold;
+
+text-align:center;
+
+}
+
+footer{
+
+margin-top:40px;
+
+padding:20px;
+
+text-align:center;
+
+background:#
+  <div class="card">
+
+<h2>طاقم صلاة فاخر</h2>
+
+<p style="text-align:center;">
+أناقة، راحة وجودة عالية.
+مناسب للاستعمال اليومي وللهدايا.
+</p>
+
+<div class="price">
+السعر: 2000 دج
+</div>
+
+<h2>الألوان المتوفرة</h2>
+
+<div class="colors">
+
+<span>ڨرونة</span>
+
+<span>نوار</span>
+
+<span>أبيض</span>
+
+<span>غوز</span>
+
+<span>باج فونسي</span>
+
+<span>فار مينيتار</span>
+
+<span>بلو فار</span>
+
+</div>
+
+</div>
+<div class="card">
+
+<h2>استمارة الطلب</h2>
+
+<input type="text" id="name" placeholder="الاسم واللقب">
+
+<input type="tel" id="phone" placeholder="رقم الهاتف">
+
+<select id="wilaya" onchange="updatePrice()">
+
+<option value="">اختر الولاية</option>
+
+<option value="Adrar" data-bureau="1100" data-home="1400">أدرار</option>
+<option value="Chlef" data-bureau="450" data-home="850">الشلف</option>
+<option value="Laghouat" data-bureau="700" data-home="1000">الأغواط</option>
+<option value="Oum El Bouaghi" data-bureau="500" data-home="850">أم البواقي</option>
+<option value="Batna" data-bureau="500" data-home="850">باتنة</option>
+<option value="Béjaïa" data-bureau="500" data-home="850">بجاية</option>
+<option value="Biskra" data-bureau="600" data-home="900">بسكرة</option>
+<option value="Béchar" data
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+
+const PRODUCT_PRICE = 2000;
+
+emailjs.init({
+  publicKey: "W9sJb28eKv_xJ6h0o"
+});
+
+function updatePrice() {
+
+const wilaya=document.getElementById("wilaya");
+
+if(wilaya.selectedIndex==0){
+document.getElementById("shippingPrice").innerHTML="سعر التوصيل: ---";
+document.getElementById("totalPrice").innerHTML="المجموع: 2000 دج";
+return;
+}
+
+const option=wilaya.options[wilaya.selectedIndex];
+
+const delivery=document.getElementById("delivery").value;
+
+const shipping=delivery=="bureau"
+?Number(option.dataset.bureau)
+:Number(option.dataset.home);
+
+document.getElementById("shippingPrice").innerHTML="سعر التوصيل: "+shipping+" دج";
+
+document.getElementById("totalPrice").innerHTML="المجموع: "+(PRODUCT_PRICE+shipping)+" دج";
+
+}
+
+function sendOrder(){
+
+const name=document.getElementById("
+                 </body>
+</html>                  
